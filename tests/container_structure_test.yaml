@@ -45,3 +45,4 @@ fileExistenceTests:
 metadataTest:
   workdir: "/workspace"
   entrypoint: ["terraform"]
+  user: "terraform"
