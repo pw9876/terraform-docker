@@ -8,7 +8,7 @@ on:
 
 env:
   IMAGE_NAME: terraform-docker
-  TERRAFORM_VERSION: "1.10.5"
+  TERRAFORM_VERSION: "1.14.8"
 
 jobs:
   security:
