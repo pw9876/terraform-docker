@@ -36,7 +36,7 @@ jobs:
 
       - name: Install container-structure-test
         run: |
-          curl -fsSL https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 \
+          curl -fsSL --proto '=https' --tlsv1.2 https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 \
             -o /usr/local/bin/container-structure-test
           chmod +x /usr/local/bin/container-structure-test
 
