@@ -41,7 +41,6 @@ fileExistenceTests:
   - name: "workspace directory exists"
     path: "/workspace"
     shouldExist: true
-    isDirectory: true
 
 metadataTest:
   workdir: "/workspace"

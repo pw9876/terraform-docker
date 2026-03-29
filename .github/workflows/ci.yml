@@ -23,8 +23,6 @@ jobs:
           fetch-depth: 0
       - name: GitGuardian Scan
         uses: GitGuardian/ggshield-action@v1
-        with:
-          args: secret scan ci
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
@@ -44,8 +42,10 @@ jobs:
           fetch-depth: 0
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3
-        # No SONAR_TOKEN needed — authenticates via GitHub OIDC
-        # Requires OIDC to be enabled in your SonarCloud organisation settings
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          # SONAR_TOKEN is a GitHub repo secret — not committed to code.
+          # Can be removed once OIDC is enabled in your SonarCloud organisation settings.
 
   build-and-test:
     name: Build & Test
