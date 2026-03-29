@@ -1,0 +1,48 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "terraform binary exists and is executable"
+    command: "terraform"
+    args: ["version"]
+    expectedOutput:
+      - "Terraform v"
+    exitCode: 0
+
+  - name: "terraform init help available"
+    command: "terraform"
+    args: ["init", "--help"]
+    exitCode: 0
+
+  - name: "terraform plan help available"
+    command: "terraform"
+    args: ["plan", "--help"]
+    exitCode: 0
+
+  - name: "git is available"
+    command: "git"
+    args: ["--version"]
+    expectedOutput:
+      - "git version"
+    exitCode: 0
+
+  - name: "bash is available"
+    command: "bash"
+    args: ["--version"]
+    expectedOutput:
+      - "GNU bash"
+    exitCode: 0
+
+fileExistenceTests:
+  - name: "terraform binary present"
+    path: "/usr/local/bin/terraform"
+    shouldExist: true
+    permissions: "-rwxr-xr-x"
+
+  - name: "workspace directory exists"
+    path: "/workspace"
+    shouldExist: true
+    isDirectory: true
+
+metadataTest:
+  workdir: "/workspace"
+  entrypoint: ["terraform"]
