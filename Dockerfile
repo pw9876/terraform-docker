@@ -20,9 +20,12 @@ RUN ARCH=$([ "${TARGETARCH}" = "arm64" ] && echo "arm64" || echo "amd64") \
        -o /tmp/terraform.zip \
     && unzip /tmp/terraform.zip -d /usr/local/bin/ \
     && rm /tmp/terraform.zip \
-    && terraform version
+    && terraform version \
+    && adduser -D terraform
 
 WORKDIR /workspace
+
+USER terraform
 
 ENTRYPOINT ["terraform"]
 CMD ["--help"]
